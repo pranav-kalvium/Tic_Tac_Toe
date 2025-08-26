@@ -27,40 +27,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameState[clickedCellIndex] = currentPlayer;
         clickedCell.textContent = currentPlayer;
+        
+        // Add class for styling based on current player
+        clickedCell.classList.add(currentPlayer === 'X' ? 'x-player' : 'o-player');
 
-        checkWin()
+        checkWin();
     }
 
     function checkWin() {
         let roundWon = false;
+        let winningCombo = null;
 
         for (let i = 0; i < winningConditions.length; i++) {
             const [a, b, c] = winningConditions[i];
-            if (gameState[a] && gameState[a] === gameState[b] && gameState[b] === gameState[c]) {
+            if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
                 roundWon = true;
-                highlightWinningCells([a, b, c]);
+                winningCombo = winningConditions[i];
                 break;
             }
         }
 
         if (roundWon) {
-            statusDisplay.textContent = messages.gameWon;
+            statusDisplay.textContent = messages.gameWon();
             gameActive = false;
+            highlightWinningCells(winningCombo);
             return;
         }
 
         if (!gameState.includes('')) {
-            statusDisplay.textContent = messages.gameDraw;
+            statusDisplay.textContent = messages.gameDraw();
             gameActive = false;
             return;
         }
 
         currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        statusDisplay.textContent = messages.playerTurn;
+        statusDisplay.textContent = messages.playerTurn();
     }
 
-    function highlightWinningCells(winningCells) {
-        winningCells.forEach(index => {
+    function highlightWinningCells(winningCombo) {
+        winningCombo.forEach(index => {
             cells[index].classList.add('winner');
         });
     }
@@ -69,11 +74,16 @@ document.addEventListener('DOMContentLoaded', () => {
         gameActive = true;
         currentPlayer = 'X';
         gameState = ['', '', '', '', '', '', '', '', ''];
-        statusDisplay.textContent = messages.playerTurn;
+        statusDisplay.textContent = messages.playerTurn();
         cells.forEach(cell => {
             cell.textContent = '';
+            cell.classList.remove('winner', 'x-player', 'o-player');
         });
     }
 
     cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+    restartButton.addEventListener('click', handleRestartGame);
+    
+    // Initialize the game status
+    statusDisplay.textContent = messages.playerTurn();
 });
