@@ -9,7 +9,7 @@ A simple and interactive Tic-Tac-Toe game built with HTML, CSS, and JavaScript. 
 3. Players alternate turns between X and O
 4. The first player to get three of their marks in a row wins
 5. If all cells are filled with no winner, the game ends in a draw
-6. Click the "Restart Game" button to start a new game
+6. Click the "Restart Game" button to start a new game.
 
 ## Project Structure
 ```
