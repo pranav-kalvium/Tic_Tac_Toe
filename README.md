@@ -53,7 +53,7 @@ restartButton.addEventListener('click', handleRestartGame);
 - Draw detection
 - Player turn indicator
 - Restart functionality
-- Visual feedback for game state
+- Visual feedback for games state
 
 ## Technologies Used
 - HTML5
