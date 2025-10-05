@@ -1,7 +1,7 @@
 # Tic-Tac-Toe Game
 
 ## Description
-A simple and interactive Tic-Tac-Toe game built with HTML, CSS, and JavaScript. Players take turns placing X and O marks on a 3x3 grid, with the goal of getting three in a row horizontally, vertically, or diagonally.
+A simple and interactive Tic-Tac-Toe game built with HTML, CSS, and JavaScript. Players take turns placing X and O marks on a 3x3 grid, with the goal of getting three in a row horizontally, vertically or diagonally.
 
 ## How to Play
 1. The game starts with Player X's turn
